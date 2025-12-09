@@ -30,7 +30,7 @@ const Dashboard = () => {
     try {
       setLoading(true);
       setError("");
-      const res = await axios.get("http://localhost:4000/api/queries/", {
+      const res = await axios.get("https://finman-backend.vercel.app/api/queries/", {
         withCredentials: true,
       });
 
@@ -81,7 +81,7 @@ const Dashboard = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        "http://localhost:4000/api/auth/logout",
+        "https://finman-backend.vercel.app/api/auth/logout",
         {},
         { withCredentials: true }
       );

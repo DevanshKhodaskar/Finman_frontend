@@ -49,7 +49,7 @@ const AddTransactionModal = ({ isOpen, onClose, onSuccess }) => {
       };
 
       const res = await axios.post(
-        "http://localhost:4000/api/queries/",
+        "https://finman-backend.vercel.app/api/queries/",
         payload,
         { withCredentials: true }
       );

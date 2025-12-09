@@ -19,7 +19,7 @@ const Signup = () => {
 
     try {
         console.log(form);
-      const res = await axios.post("http://localhost:4000/api/auth/signup", form,{ withCredentials: true });
+      const res = await axios.post("https://finman-backend.vercel.app/api/auth/signup", form,{ withCredentials: true });
         console.log('Signup response:', res);
       alert(res.data.message || "Signup successful");
     } catch (err) {

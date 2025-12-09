@@ -65,7 +65,7 @@ const EditTransactionModal = ({ isOpen, onClose, transaction, onSuccess }) => {
       };
 
       const res = await axios.put(
-        `http://localhost:4000/api/queries/${transaction._id}`,
+        `https://finman-backend.vercel.app/api/queries/${transaction._id}`,
         payload,
         { withCredentials: true }
       );
@@ -107,7 +107,7 @@ const EditTransactionModal = ({ isOpen, onClose, transaction, onSuccess }) => {
       try {
         setLoading(true);
         const res = await axios.delete(
-          `http://localhost:4000/api/queries/${transaction._id}`,
+          `https://finman-backend.vercel.app/api/queries/${transaction._id}`,
           { withCredentials: true }
         );
 

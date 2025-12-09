@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/auth/me", {
+        const res = await axios.get("https://finman-backend.vercel.app/api/auth/me", {
           withCredentials: true,
         });
         setUser(res.data.user || null);
@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (phone_number, password) => {
     const res = await axios.post(
-      "http://localhost:4000/api/auth/login",
+      "https://finman-backend.vercel.app/api/auth/login",
       { phone_number, password },
       { withCredentials: true }
     );
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    await axios.post("http://localhost:4000/api/auth/logout", {}, { withCredentials: true });
+    await axios.post("https://finman-backend.vercel.app/api/auth/logout", {}, { withCredentials: true });
     setUser(null);
   };
 
