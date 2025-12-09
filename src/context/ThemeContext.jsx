@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
   // Load theme preference from localStorage on mount
   useEffect(() => {
