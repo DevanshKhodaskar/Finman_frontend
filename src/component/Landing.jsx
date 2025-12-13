@@ -517,11 +517,43 @@ const Landing = () => {
                 </ul>
               </div>
             </div>
-            <div
-              className={`border-t pt-8 text-center text-sm ${isDark ? "border-border text-foreground/50" : "border-slate-200 text-slate-600"}`}
-            >
-              <p>&copy; 2025 FinMan. All rights reserved.</p>
-            </div>
+           <div
+  className={`border-t pt-8 text-center text-sm space-y-3 ${
+    isDark ? "border-border text-foreground/50" : "border-slate-200 text-slate-600"
+  }`}
+>
+  <p>&copy; 2025 FinMan. All rights reserved.</p>
+
+  <p className="flex flex-col sm:flex-row items-center justify-center gap-2">
+    <span>
+      Made with <span className="text-red-500">❤️</span> by
+      <span className={`font-semibold ${isDark ? "text-foreground" : "text-slate-900"}`}>
+        {" "}Devansh Khodaskar
+      </span>
+    </span>
+
+    <span className="flex items-center gap-3">
+      <a
+        href="https://github.com/DevanshKhodaskar"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-primary transition"
+      >
+        GitHub
+      </a>
+      <span>•</span>
+      <a
+        href="https://www.linkedin.com/in/devanshkhodaskar/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-primary transition"
+      >
+        LinkedIn
+      </a>
+    </span>
+  </p>
+</div>
+
           </div>
         </footer>
       </div>
