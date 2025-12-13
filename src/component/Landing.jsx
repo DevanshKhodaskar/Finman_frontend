@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
 import { Menu, X, Zap, Shield, Sparkles, TrendingUp } from "lucide-react"
 import { useTheme } from '../context/ThemeContext.jsx'
+import { Github, Linkedin } from "lucide-react"
+
 
 const Landing = () => {
   const { isDark, toggleTheme } = useTheme()
@@ -524,34 +526,37 @@ const Landing = () => {
 >
   <p>&copy; 2025 FinMan. All rights reserved.</p>
 
-  <p className="flex flex-col sm:flex-row items-center justify-center gap-2">
-    <span>
-      Made with <span className="text-red-500">❤️</span> by
-      <span className={`font-semibold ${isDark ? "text-foreground" : "text-slate-900"}`}>
-        {" "}Devansh Khodaskar
-      </span>
+<p className="flex flex-col sm:flex-row items-center justify-center gap-3">
+  <span>
+    Made with <span className="text-red-500">❤️</span> by
+    <span className={`font-semibold ${isDark ? "text-foreground" : "text-slate-900"}`}>
+      {" "}Devansh Khodaskar
     </span>
+  </span>
 
-    <span className="flex items-center gap-3">
-      <a
-        href="https://github.com/DevanshKhodaskar"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:text-primary transition"
-      >
-        GitHub
-      </a>
-      <span>•</span>
-      <a
-        href="https://www.linkedin.com/in/devanshkhodaskar/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:text-primary transition"
-      >
-        LinkedIn
-      </a>
-    </span>
-  </p>
+  <span className="flex items-center gap-4">
+    <a
+      href="https://github.com/DevanshKhodaskar"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:text-primary transition"
+      aria-label="GitHub"
+    >
+      <Github size={18} />
+    </a>
+
+    <a
+      href="https://www.linkedin.com/in/devanshkhodaskar/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:text-primary transition"
+      aria-label="LinkedIn"
+    >
+      <Linkedin size={18} />
+    </a>
+  </span>
+</p>
+
 </div>
 
           </div>
