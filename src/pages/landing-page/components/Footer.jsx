@@ -2,7 +2,7 @@ import React from 'react';
 import Icon from 'components/AppIcon';
 
 const Footer = () => {
-  const currentYear = new Date()?.getFullYear();
+  const currentYear = new Date().getFullYear();
 
   const footerLinks = {
     product: [
@@ -32,24 +32,24 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: 'Twitter', href: 'https://twitter.com/finmanpro', label: 'Twitter' },
-    { icon: 'Github', href: 'https://github.com/finmanpro', label: 'GitHub' },
-    { icon: 'Linkedin', href: 'https://linkedin.com/company/finmanpro', label: 'LinkedIn' },
-    { icon: 'Youtube', href: 'https://youtube.com/@finmanpro', label: 'YouTube' }
+    { icon: 'Twitter', href: 'https://twitter.com/FinMan', label: 'Twitter' },
+    { icon: 'Github', href: 'https://github.com/FinMan', label: 'GitHub' },
+    { icon: 'Linkedin', href: 'https://linkedin.com/company/FinMan', label: 'LinkedIn' },
+    { icon: 'Youtube', href: 'https://youtube.com/@FinMan', label: 'YouTube' }
   ];
 
   const handleLinkClick = (href) => {
     if (href?.startsWith('#')) {
-      const element = document.getElementById(href?.substring(1));
-      if (element) {
-        element?.scrollIntoView({ behavior: 'smooth' });
-      }
+      const element = document.getElementById(href.substring(1));
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
     <footer className="bg-card border-t border-border">
       <div className="max-w-9xl mx-auto px-6 py-16">
+
+        {/* Top Section */}
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-12 mb-12">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
@@ -58,96 +58,99 @@ const Footer = () => {
               </div>
               <span className="text-2xl font-bold gradient-text">FinMan</span>
             </div>
+
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Track expenses like you think. Instantly log via Telegram, get beautiful dashboard insights. Free forever.
             </p>
+
             <div className="flex gap-3">
-              {socialLinks?.map((social, index) => (
+              {socialLinks.map((social, index) => (
                 <a
                   key={index}
-                  href={social?.href}
+                  href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={social.label}
                   className="w-10 h-10 rounded-lg glass-effect hover:bg-primary/20 flex items-center justify-center transition-all duration-300 hover:scale-110"
-                  aria-label={social?.label}
                 >
-                  <Icon name={social?.icon} size={20} />
+                  <Icon name={social.icon} size={20} />
                 </a>
               ))}
             </div>
           </div>
 
-          <div>
-            <h3 className="font-semibold mb-4">Product</h3>
-            <ul className="space-y-3">
-              {footerLinks?.product?.map((link, index) => (
-                <li key={index}>
-                  <button
-                    onClick={() => handleLinkClick(link?.href)}
-                    className="text-muted-foreground hover:text-foreground transition-colors text-sm"
-                  >
-                    {link?.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-3">
-              {footerLinks?.company?.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link?.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors text-sm"
-                  >
-                    {link?.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-4">Legal</h3>
-            <ul className="space-y-3">
-              {footerLinks?.legal?.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link?.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors text-sm"
-                  >
-                    {link?.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-4">Support</h3>
-            <ul className="space-y-3">
-              {footerLinks?.support?.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link?.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors text-sm"
-                  >
-                    {link?.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Link Columns */}
+          {Object.entries(footerLinks).map(([section, links]) => (
+            <div key={section}>
+              <h3 className="font-semibold mb-4 capitalize">{section}</h3>
+              <ul className="space-y-3">
+                {links.map((link, index) => (
+                  <li key={index}>
+                    {link.href.startsWith('#') ? (
+                      <button
+                        onClick={() => handleLinkClick(link.href)}
+                        className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+                      >
+                        {link.label}
+                      </button>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+                      >
+                        {link.label}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
+        {/* Bottom Section */}
         <div className="border-t border-border pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-sm text-muted-foreground">
+
+            {/* Copyright + Creator */}
+            <div className="text-sm text-muted-foreground text-center md:text-left">
               © {currentYear} FinMan. All rights reserved.
+              <span className="block md:inline md:ml-2">
+                Made with{' '}
+                <span className="inline-block text-red-500 animate-pulse animate-glow-pulse mx-1">
+                  ❤️
+                </span>
+                by{' '}
+                <span className="font-semibold text-foreground">
+                  Devansh Khodaskar
+                </span>
+              </span>
+
+              {/* Personal Links */}
+              <div className="flex items-center justify-center md:justify-start gap-3 mt-2">
+                <a
+                  href="https://www.linkedin.com/in/devanshkhodaskar/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Icon name="Linkedin" size={18} />
+                </a>
+
+                <a
+                  href="https://github.com/DevanshKhodaskar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  aria-label="GitHub"
+                >
+                  <Icon name="Github" size={18} />
+                </a>
+              </div>
             </div>
-            
+
+            {/* Trust Badges */}
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Icon name="Shield" size={16} color="var(--color-accent)" />
@@ -158,8 +161,10 @@ const Footer = () => {
                 <span>Available in 47 countries</span>
               </div>
             </div>
+
           </div>
         </div>
+
       </div>
     </footer>
   );

@@ -142,7 +142,7 @@ const FAQSection = () => {
               size="lg"
               iconName="MessageCircle"
               iconPosition="left"
-              onClick={() => window.open('https://t.me/finmanpro_support', '_blank')}
+              onClick={() => window.open('https://t.me/FinMan_support', '_blank')}
             >
               Contact Support
             </Button>
