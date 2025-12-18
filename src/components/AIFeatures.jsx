@@ -6,6 +6,9 @@ const AIFeatures = () => {
   const { isDark, toggleTheme } = useTheme();
   
   return (
+
+
+    
     <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-white via-purple-50 to-lavender-100'}`}>
       {/* Header */}
       <div className={`sticky top-0 z-40 border-b shadow-sm transition-colors duration-300 ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-purple-200'}`}>
