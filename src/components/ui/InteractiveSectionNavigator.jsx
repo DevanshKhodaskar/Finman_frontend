@@ -9,7 +9,6 @@ const InteractiveSectionNavigator = () => {
     { label: 'Home', anchor: 'hero', icon: 'Home', tooltip: 'Back to top' },
     { label: 'How It Works', anchor: 'demo', icon: 'PlayCircle', tooltip: 'See live Telegram bot demo' },
     { label: 'Features', anchor: 'features', icon: 'Sparkles', tooltip: 'Explore dual-platform benefits' },
-    { label: 'Testimonials', anchor: 'reviews', icon: 'MessageSquare', tooltip: 'Read user success stories' },
     { label: 'Pricing', anchor: 'pricing', icon: 'DollarSign', tooltip: 'Free forever plan' },
     { label: 'FAQ', anchor: 'faq', icon: 'HelpCircle', tooltip: 'Get answers' },
   ];
