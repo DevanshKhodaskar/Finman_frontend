@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary Colors */
+    --color-primary: #8B5CF6; /* purple-600 - Electric purple for brand power + CTA dominance */
+    --color-primary-foreground: #FFFFFF; /* white - Maximum contrast for CTA text */
+    
+    /* Secondary Colors */
+    --color-secondary: #06B6D4; /* cyan-500 - Cyan for supporting hierarchy and trust elements */
+    --color-secondary-foreground: #FFFFFF; /* white - High contrast for secondary actions */
+    
+    /* Accent Colors */
+    --color-accent: #10B981; /* emerald-500 - Success green for conversion moments only */
+    --color-accent-foreground: #FFFFFF; /* white - Clear contrast for accent elements */
+    
+    /* Background Colors */
+    --color-background: #0F0F23; /* custom-dark - Deep space for premium feel and content focus */
+    --color-foreground: #F8FAFC; /* slate-50 - Maximum contrast for instant scanning */
+    
+    /* Surface Colors */
+    --color-card: #1E1E3F; /* custom-surface - Card backgrounds with subtle separation */
+    --color-card-foreground: #F8FAFC; /* slate-50 - High contrast card text */
+    
+    --color-popover: #1E1E3F; /* custom-surface - Popover backgrounds */
+    --color-popover-foreground: #F8FAFC; /* slate-50 - Popover text */
+    
+    /* Muted Colors */
+    --color-muted: #1E1E3F; /* custom-surface - Muted backgrounds */
+    --color-muted-foreground: #94A3B8; /* slate-400 - Supporting content without distraction */
+    
+    /* Border & Input */
+    --color-border: rgba(139, 92, 246, 0.2); /* purple-600 with opacity - Form fields and card separations */
+    --color-input: #1E1E3F; /* custom-surface - Input backgrounds */
+    --color-ring: #8B5CF6; /* purple-600 - Focus ring color */
+    
+    /* Status Colors */
+    --color-success: #22C55E; /* green-500 - Positive reinforcement for form completions */
+    --color-success-foreground: #FFFFFF; /* white - Success message text */
+    
+    --color-warning: #F59E0B; /* amber-500 - Scarcity elements if needed */
+    --color-warning-foreground: #FFFFFF; /* white - Warning message text */
+    
+    --color-error: #EF4444; /* red-500 - Form validation feedback only */
+    --color-error-foreground: #FFFFFF; /* white - Error message text */
+    
+    --color-destructive: #EF4444; /* red-500 - Destructive actions */
+    --color-destructive-foreground: #FFFFFF; /* white - Destructive action text */
+    
+    /* Radius */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --color-background: #0A0A0A; /* gray-950 - Deeper dark mode background */
+    --color-foreground: #F8FAFC; /* slate-50 - Maintained high contrast */
+    
+    --color-card: #1A1A2E; /* custom-darker - Darker card backgrounds */
+    --color-card-foreground: #F8FAFC; /* slate-50 - High contrast maintained */
+    
+    --color-popover: #1A1A2E; /* custom-darker - Darker popover */
+    --color-popover-foreground: #F8FAFC; /* slate-50 - High contrast maintained */
+    
+    --color-muted: #1A1A2E; /* custom-darker - Darker muted backgrounds */
+    --color-muted-foreground: #94A3B8; /* slate-400 - Maintained supporting text */
+    
+    --color-border: rgba(139, 92, 246, 0.3); /* purple-600 with increased opacity */
+    --color-input: #1A1A2E; /* custom-darker - Darker input backgrounds */
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+    font-variation-settings: 'opsz' 32;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+  }
+
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  /* CTA Button Shadows */
+  .cta-shadow {
+    box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.25);
+  }
+
+  /* Floating Card Shadows */
+  .card-shadow {
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Glassmorphism Effect */
+  .glass-effect {
+    background: rgba(30, 30, 63, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+  }
+
+  /* Neon Glow Effect */
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5),
+                0 0 40px rgba(139, 92, 246, 0.3),
+                0 0 60px rgba(139, 92, 246, 0.1);
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Smooth Scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secondary);
+  }
+}
+
+@layer utilities {
+  /* Animation Utilities */
+  .transition-transform-250 {
+    transition: transform 250ms ease-out;
+  }
+
+  .transition-opacity-200 {
+    transition: opacity 200ms ease-in-out;
+  }
+
+  .transition-scroll-300 {
+    transition: all 300ms ease-out;
+  }
+
+  /* Text Utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Focus Visible */
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
