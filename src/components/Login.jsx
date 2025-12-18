@@ -117,7 +117,7 @@ const Login = () => {
                 id="phone_number"
                 name="phone_number"
                 type="tel"
-                placeholder="e.g., +91 9876543210"
+                placeholder="Enter Your 10 digit number ex: 9876543210"
                 value={form.phone_number}
                 onChange={handleChange}
                 disabled={loading}
