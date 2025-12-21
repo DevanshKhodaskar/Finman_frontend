@@ -44,9 +44,47 @@ const Dashboard = () => {
   const [showDownloadModal, setShowDownloadModal] = useState(false)
   const [selectedTransaction, setSelectedTransaction] = useState(null)
   const [filterCategory, setFilterCategory] = useState("All")
+  const [deferredPrompt, setDeferredPrompt] = useState(null)
+const [showInstall, setShowInstall] = useState(false)
+
+useEffect(() => {
+  const handler = (e) => {
+    e.preventDefault()
+    setDeferredPrompt(e)
+    setShowInstall(true)
+  }
+
+  window.addEventListener("beforeinstallprompt", handler)
+
+  return () => window.removeEventListener("beforeinstallprompt", handler)
+}, [])
+const handleInstall = async () => {
+  if (!deferredPrompt) return
+
+  deferredPrompt.prompt()
+  const choice = await deferredPrompt.userChoice
+
+  if (choice.outcome === "accepted") {
+    setShowInstall(false)
+  }
+}
+
+const requestNotificationPermission = async () => {
+  if (!("Notification" in window)) return
+
+  const permission = await Notification.requestPermission()
+  if (permission === "granted") {
+    new Notification("FinMan Ready 🚀", {
+      body: "Track expenses instantly from your home screen",
+      icon: "/icons/icon-192.png",
+    })
+  }
+}
+
 
   useEffect(() => {
     fetchQueries()
+    requestNotificationPermission()
   }, [])
 
   const fetchQueries = async () => {
@@ -525,6 +563,23 @@ const Dashboard = () => {
             </div>
 
             <div className="flex flex-wrap gap-2 justify-end w-full md:w-auto">
+              {/* {showInstall && ( */}
+  <div className="mx-4 mt-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-3 flex items-center justify-between shadow-lg">
+    <div>
+      <p className="font-semibold">📲 Install FinMan</p>
+      <p className="text-xs opacity-90">
+        Get quick access & offline support
+      </p>
+    </div>
+    <button
+      onClick={handleInstall}
+      className="bg-white text-indigo-700 px-4 py-1.5 rounded-full text-sm font-bold"
+    >
+      INSTALL
+    </button>
+  </div>
+{/* )} */}
+
               <button
                 onClick={toggleTheme}
                 className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium flex items-center gap-2
